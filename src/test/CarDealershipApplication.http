@@ -1,0 +1,189 @@
+
+###
+POST http://localhost:8080/api/cars
+Content-Type: application/json
+Accept: application/json
+{"make" : "Audi"}
+
+###
+GET localhost:8080/api/cars/
+Accept: application/json
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+ "make" : "Audi",
+  "model" : "S6",
+  "year" : "2001",
+  "kilometers" : "239713",
+"conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "DIESEL",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "2790000",
+  "ownerFirstName" : "John",
+  "ownerLastName" : "Doe",
+  "ownerPhoneNumber" : "+3630/123-4567",
+  "vehicleIdentificationNumber" : "ABC1234567890DEFH"
+}
+
+###
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "BMW",
+  "model" : "I3",
+  "year" : "2016",
+  "kilometers" : "84682",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "ELECTRIC",
+  "numberOfSeats" : "FOUR_SEATER",
+  "price" : "6190000",
+  "ownerFirstName" : "Jane",
+  "ownerLastName" : "Doe",
+  "ownerPhoneNumber" : "+3630/223-4567",
+  "vehicleIdentificationNumber" : "ABC2234567890DEFH"
+}
+
+###
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "Chevrolet",
+  "model" : "Captiva",
+  "year" : "2013",
+  "kilometers" : "214571",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "SEVEN_SEATER",
+  "price" : "214571",
+  "ownerFirstName" : "Jack",
+  "ownerLastName" : "Smith",
+  "ownerPhoneNumber" : "+3630/323-4567",
+  "vehicleIdentificationNumber" : "ABC3234567890DEFH"
+}
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "Dacia",
+  "model" : "Duster",
+  "year" : "2015",
+  "kilometers" : "79124",
+  "conditionOfTheVehicle" : "AVERAGE",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "79124",
+  "ownerFirstName" : "Jack",
+  "ownerLastName" : "Foo",
+  "ownerPhoneNumber" : "+3630/423-4567",
+  "vehicleIdentificationNumber" : "ABC4234567890DEFH"
+}
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "Mazda",
+  "model" : "MX-5",
+  "year" : "2006",
+  "kilometers" : "119626",
+  "conditionOfTheVehicle" : "USED",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "TWO_SEATER",
+  "price" : "299000",
+  "ownerFirstName" : "Bill",
+  "ownerLastName" : "Smith",
+  "ownerPhoneNumber" : "+3630/523-4567",
+  "vehicleIdentificationNumber" : "ABC5234567890DEFH"
+}
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+http://localhost:8080/api/cars/
+{
+  "make" : "KIA",
+  "model" : "CEED",
+  "year" : "2017",
+  "kilometers" : "71042",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "DIESEL",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "4590000",
+  "ownerFirstName" : "Lui",
+  "ownerLastName" : "Chong",
+  "ownerPhoneNumber" : "+3630/723-4567",
+  "vehicleIdentificationNumber" : "ABC7234567890DEFH"
+}
+
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "Audi",
+  "model" : "S6",
+  "year" : "2001",
+  "kilometers" : "239713",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "2790000",
+  "ownerFirstName" : "John",
+  "ownerLastName" : "Doe",
+  "ownerPhoneNumber" : "+3630/123-4567",
+  "vehicleIdentificationNumber" : "ABC1234567890DEFH"
+}
+
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "KIA",
+  "model" : "CEED",
+  "year" : "2018",
+  "kilometers" : "61042",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "5590000",
+  "ownerFirstName" : "Mia",
+  "ownerLastName" : "Cheng",
+  "ownerPhoneNumber" : "+3630/623-4567",
+  "vehicleIdentificationNumber" : "ABC6234567890DEFH"
+}
+
+###
+GET localhost:8080/api/owners/
+Accept: application/json
+
+
+### Update price
+PUT localhost:8080/api/cars/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "price" : "111005"
+}
