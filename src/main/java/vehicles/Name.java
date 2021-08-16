@@ -13,7 +13,10 @@ import java.lang.annotation.Target;
 public @interface Name {
 
     String message() default "The length of the FirstName/LastName must be greater than 2 characters, and must be less than 50 characters (2-50 characters) and the first character must be capital letter";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payloads() default {};
+
     int maxLength() default 50;
 }

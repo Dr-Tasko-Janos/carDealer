@@ -29,9 +29,9 @@ public class AdditionalServiceForKilometer {
 
     public List<CarDto> listByKilometer(Optional<String> kilometer) {
 
-        String [] parameters = new String[2];
+        String[] parameters = new String[2];
         Integer[] parametersInInt = new Integer[2];
-        if(kilometer.isPresent()) {
+        if (kilometer.isPresent()) {
             parameters = kilometer.get().split("-");
 
             parametersInInt[0] = Integer.parseInt(parameters[0]);

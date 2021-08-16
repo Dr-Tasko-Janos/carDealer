@@ -18,7 +18,8 @@ public class SensitiveDataOfOwnerAndVehicleService {
 
     private final CarsRepository carsRepository;
 
-    private final Type targetListTypeForSensitive = new TypeToken<List<SensitiveDataOfOwnerAndVehicleDto>>(){}.getType();
+    private final Type targetListTypeForSensitive = new TypeToken<List<SensitiveDataOfOwnerAndVehicleDto>>() {
+    }.getType();
 
 
     public void createNewOwner(SensitiveDataOfOwnerAndVehicle sensitiveDataOfOwnerAndVehicle) {

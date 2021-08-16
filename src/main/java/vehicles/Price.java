@@ -12,8 +12,11 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = PriceValidator.class)
 public @interface Price {
 
-    String message() default  "The given price tag is not correct. It must be larger than or equal than 100.000( one hundred thousand) and it has to be rounded to the nearest hundred thousand";
-    Class<?> [] groups() default {};
-    Class<? extends Payload> [] payloads() default {};
+    String message() default "The given price tag is not correct. It must be larger than or equal than 100.000( one hundred thousand) and it has to be rounded to the nearest hundred thousand";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payloads() default {};
+
     int minValue() default 100000;
 }

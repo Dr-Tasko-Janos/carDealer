@@ -17,7 +17,7 @@ import javax.validation.constraints.PositiveOrZero;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="cars")
+@Table(name = "cars")
 public class Car {
 
     @Id
@@ -44,7 +44,7 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private EngineType engineType;
 
-    @Column(name ="number_of_seats")
+    @Column(name = "number_of_seats")
     @Enumerated(EnumType.STRING)
     private NumberOfSeats numberOfSeats;
 

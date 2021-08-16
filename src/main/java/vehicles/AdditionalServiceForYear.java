@@ -31,7 +31,7 @@ public class AdditionalServiceForYear {
 
         String[] parameters = new String[2];
         Integer[] parametersInInt = new Integer[2];
-        if(year.isPresent()) {
+        if (year.isPresent()) {
             parameters = year.get().split("-");
 
             parametersInInt[0] = Integer.parseInt(parameters[0]);

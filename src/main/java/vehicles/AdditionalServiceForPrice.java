@@ -29,9 +29,9 @@ public class AdditionalServiceForPrice {
 
     public List<CarDto> listByPrice(Optional<String> price) {
 
-        String [] parameters = new String[2];
+        String[] parameters = new String[2];
         Integer[] parametersInInt = new Integer[2];
-        if(price.isPresent()) {
+        if (price.isPresent()) {
             parameters = price.get().split("-");
 
             parametersInInt[0] = Integer.parseInt(parameters[0]);

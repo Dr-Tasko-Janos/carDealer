@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class CarsRepository {
 
-private EntityManagerFactory factoryCar;
+    private EntityManagerFactory factoryCar;
 
     public CarsRepository(EntityManagerFactory entityManagerFactory) {
         this.factoryCar = Persistence.createEntityManagerFactory("pu");
