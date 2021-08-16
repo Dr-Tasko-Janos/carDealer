@@ -22,12 +22,4 @@ public class SensitiveDataOfOwnerAndVehicleRepository {
         emCar.getTransaction().commit();
         emCar.close();
     }
-
-    public List<SensitiveDataOfOwnerAndVehicle> selectAllSensitive() {
-        EntityManager em1 = factorySensitive.createEntityManager();
-        em1.getTransaction().begin();
-        List<SensitiveDataOfOwnerAndVehicle> allSensitiveData = em1.createQuery("select e from SensitiveDataOfOwnerAndVehicle e order by e.ownerFirstName", SensitiveDataOfOwnerAndVehicle.class).getResultList();
-        em1.close();
-        return allSensitiveData;
-    }
 }

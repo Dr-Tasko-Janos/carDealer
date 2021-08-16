@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -56,5 +57,9 @@ public class CarsService {
     public CarDto updateCarPrice(long id, UpdateCarPriceCommand command) {
         Car carForPriceUpdate = carsRepository.updatePrice(id, command.getPrice());
         return modelMapper.map(carForPriceUpdate, CarDto.class);
+    }
+
+    public void deleteCar(long id) {
+        carsRepository.deleteCar(id);
     }
 }

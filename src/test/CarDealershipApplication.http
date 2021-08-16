@@ -187,3 +187,31 @@ Accept: application/json
 {
   "price" : "111005"
 }
+
+
+###
+
+###
+POST localhost:8080/api/cars/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "make" : "KIA",
+  "model" : "CEED",
+  "year" : "2018",
+  "kilometers" : "61042",
+  "conditionOfTheVehicle" : "EXCELLENT",
+  "engineType" : "GASOLINE",
+  "numberOfSeats" : "FIVE_SEATER",
+  "price" : "5590000",
+  "ownerFirstName" : "Mia",
+  "ownerLastName" : "Cheng",
+  "ownerPhoneNumber" : "+3630/623-4567",
+  "vehicleIdentificationNumber" : "ABC6234567890DEFH"
+}
+
+###
+DELETE localhost:8080/api/cars/4
+Content-Type: application/json
+Accept: application/json

@@ -12,9 +12,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SensitiveDataOfOwnerAndVehicleService {
 
-    private final ModelMapper modelMapper1;
+    private final ModelMapper modelMapper;
 
     private final SensitiveDataOfOwnerAndVehicleRepository sensitiveDataOfOwnerAndVehicleRepository;
+
+    private final CarsRepository carsRepository;
 
     private final Type targetListTypeForSensitive = new TypeToken<List<SensitiveDataOfOwnerAndVehicleDto>>(){}.getType();
 
@@ -23,8 +25,8 @@ public class SensitiveDataOfOwnerAndVehicleService {
         sensitiveDataOfOwnerAndVehicleRepository.saveNewSensitiveDataOfOwnerAndVehicle(sensitiveDataOfOwnerAndVehicle);
     }
 
-    public List<SensitiveDataOfOwnerAndVehicleDto> selectAllSensitive() {
-       List<SensitiveDataOfOwnerAndVehicle> allSelectedData = sensitiveDataOfOwnerAndVehicleRepository.selectAllSensitive();
-       return modelMapper1.map(allSelectedData, targetListTypeForSensitive);
+    public List<SensitiveDataOfOwnerAndVehicleDto> selectAllSensitiveData() {
+        List<SensitiveDataOfOwnerAndVehicle> allSensitiveData = carsRepository.selectAllSensitive();
+        return modelMapper.map(allSensitiveData, targetListTypeForSensitive);
     }
 }

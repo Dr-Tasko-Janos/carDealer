@@ -17,32 +17,56 @@ private EntityManagerFactory factoryCar;
     }
 
     public void saveNewCar(Car newCar, SensitiveDataOfOwnerAndVehicle sensitiveDataOfOwnerAndVehicle) {
-        EntityManager emCar = factoryCar.createEntityManager();
-        emCar.getTransaction().begin();
-        emCar.persist(newCar);
+        EntityManager emNewCar = factoryCar.createEntityManager();
+        emNewCar.getTransaction().begin();
+        emNewCar.persist(newCar);
         sensitiveDataOfOwnerAndVehicle.setCar(newCar);
-        emCar.persist(sensitiveDataOfOwnerAndVehicle);
-        emCar.getTransaction().commit();
-        emCar.close();
+        emNewCar.persist(sensitiveDataOfOwnerAndVehicle);
+        emNewCar.getTransaction().commit();
+        emNewCar.close();
     }
 
     public List<Car> findAll() {
-        EntityManager em = factoryCar.createEntityManager();
-        List<Car> foundCars = em.createQuery("select e from Car e order by e.model", Car.class).getResultList();
-        em.close();
+        EntityManager emFindAll = factoryCar.createEntityManager();
+        List<Car> foundCars = emFindAll.createQuery("select e from Car e order by e.model", Car.class).getResultList();
+        emFindAll.close();
         return foundCars;
     }
 
     public Car updatePrice(Long id, int newPrice) {
-        EntityManager em = factoryCar.createEntityManager();
-        em.getTransaction().begin();
-        Car foundCarForPriceUpdate = em.createQuery("select e from Car e where e.id = :id", Car.class)
+        EntityManager emUpdatePrice = factoryCar.createEntityManager();
+        emUpdatePrice.getTransaction().begin();
+        Car foundCarForPriceUpdate = emUpdatePrice.createQuery("select e from Car e where e.id = :id", Car.class)
                 .setParameter("id", id)
                 .getSingleResult();
         foundCarForPriceUpdate.setPrice(newPrice);
-        em.getTransaction().commit();
-        em.close();
+        emUpdatePrice.getTransaction().commit();
+        emUpdatePrice.close();
         return foundCarForPriceUpdate;
     }
 
+    public List<SensitiveDataOfOwnerAndVehicle> selectAllSensitive() {
+        EntityManager emSensitive = factoryCar.createEntityManager();
+        emSensitive.getTransaction().begin();
+        List<SensitiveDataOfOwnerAndVehicle> allSensitiveData = emSensitive.createQuery("select e from SensitiveDataOfOwnerAndVehicle e join fetch e.car fetch all properties order by e.id", SensitiveDataOfOwnerAndVehicle.class).getResultList();
+        emSensitive.close();
+        return allSensitiveData;
+    }
+
+    public void deleteCar(long id) {
+        EntityManager emDeleteCar = factoryCar.createEntityManager();
+        emDeleteCar.getTransaction().begin();
+        SensitiveDataOfOwnerAndVehicle ownerToDelete = emDeleteCar.createQuery("select e from SensitiveDataOfOwnerAndVehicle e where e.id = :id", SensitiveDataOfOwnerAndVehicle.class)
+                .setParameter("id", id)
+                .getSingleResult();
+        emDeleteCar.remove(ownerToDelete);
+        emDeleteCar.getTransaction().commit();
+        emDeleteCar.getTransaction().begin();
+        Car carToDelete = emDeleteCar.createQuery("select c from Car c where c.id = :id", Car.class)
+                .setParameter("id", id)
+                .getSingleResult();
+        emDeleteCar.remove(carToDelete);
+        emDeleteCar.getTransaction().commit();
+        emDeleteCar.close();
+    }
 }
