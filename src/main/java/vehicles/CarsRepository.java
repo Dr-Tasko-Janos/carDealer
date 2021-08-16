@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -68,5 +69,18 @@ private EntityManagerFactory factoryCar;
         emDeleteCar.remove(carToDelete);
         emDeleteCar.getTransaction().commit();
         emDeleteCar.close();
+    }
+
+    public void deleteAll() {
+        EntityManager emDeleteAll = factoryCar.createEntityManager();
+        emDeleteAll.getTransaction().begin();
+        Query query = emDeleteAll.createQuery("DELETE from SensitiveDataOfOwnerAndVehicle e where e.id > 0");
+        query.executeUpdate();
+        emDeleteAll.getTransaction().commit();
+        emDeleteAll.getTransaction().begin();
+        query = emDeleteAll.createQuery("DELETE from Car c where c.id > 0");
+        query.executeUpdate();
+        emDeleteAll.getTransaction().commit();
+        emDeleteAll.close();
     }
 }
