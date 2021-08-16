@@ -68,6 +68,20 @@ public class CarsControllerRestTemplateIT {
     }
 
     @Test
+    void testFindOwnerById() {
+        carsService.deleteAll();
+
+        CarDto carDto1 = template.postForObject("/api/cars/", new CreateCarCommand("AUDI", "S6", 2001, 239713, ConditionOfTheVehicle.USED, EngineType.DIESEL, NumberOfSeats.FIVE_SEATER, 279000, "John", "Doe", "+3630/123-4567", "AUD1463787890DEFH"), CarDto.class);
+        CarDto carDto2 = template.postForObject("/api/cars/", new CreateCarCommand("BMW", "I3", 2016, 84682, ConditionOfTheVehicle.EXCELLENT, EngineType.ELECTRIC, NumberOfSeats.FOUR_SEATER, 6100000, "Jane", "Doe", "+3630/323-4567", "BMW1463787890DEFH"), CarDto.class);
+        CarDto carDto3 = template.postForObject("/api/cars/", new CreateCarCommand("Chevrolet", "Captiva", 2013, 214571, ConditionOfTheVehicle.EXCELLENT, EngineType.GASOLINE, NumberOfSeats.SEVEN_SEATER, 214571, "Jack", "Smith", "+3630/423-4567", "Chevrolet7890DEFH"), CarDto.class);
+        CarDto carDto4 = template.postForObject("/api/cars/", new CreateCarCommand("Mazda", "MX-5", 2006, 119626, ConditionOfTheVehicle.USED, EngineType.GASOLINE, NumberOfSeats.TWO_SEATER, 2900000, "Bill", "Smith", "+3630/523-4567", "MAZDAABC5234567890DEFH"), CarDto.class);
+
+
+        SensitiveDataOfOwnerAndVehicleDto foundOwner = template.exchange("/api/owners/3", HttpMethod.GET, null, SensitiveDataOfOwnerAndVehicleDto.class).getBody();
+        assertThat(foundOwner).extracting(SensitiveDataOfOwnerAndVehicleDto::getOwnerFirstName).isEqualTo("Jack");
+    }
+
+    @Test
     void testSelectByMake() {
         carsService.deleteAll();
 

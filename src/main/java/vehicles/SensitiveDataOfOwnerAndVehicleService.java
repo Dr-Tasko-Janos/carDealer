@@ -29,4 +29,8 @@ public class SensitiveDataOfOwnerAndVehicleService {
         List<SensitiveDataOfOwnerAndVehicle> allSensitiveData = carsRepository.selectAllSensitive();
         return modelMapper.map(allSensitiveData, targetListTypeForSensitive);
     }
+
+    public SensitiveDataOfOwnerAndVehicleDto findSensitiveDataById(long id) {
+        return selectAllSensitiveData().stream().filter(e -> e.getId() == id).findFirst().map(e -> modelMapper.map(e, SensitiveDataOfOwnerAndVehicleDto.class)).orElseThrow(() -> new CarNotFoundException(id));
+    }
 }
