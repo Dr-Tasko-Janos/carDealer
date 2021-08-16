@@ -28,7 +28,7 @@ public class AdditionalServiceForModel {
     }
 
     public List<CarDto> listByModel(Optional<String> model) {
-        return listAllCars().stream().filter(e -> model.isEmpty() || e.getMake()
+        return listAllCars().stream().filter(e -> model.isEmpty() || e.getModel()
                 .toUpperCase().equals(model.get().toUpperCase())).collect(Collectors.toList());
     }
 }
